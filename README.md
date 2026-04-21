@@ -47,7 +47,7 @@ Porchlight is a connected-device software stack. It focuses on the code that sit
 6. publish event history and telemetry to an API when connectivity returns;
 7. present the system through a dashboard, benchmark report, and docs site.
 
-It is not a hardware PCB project, a consumer mobile app, or a claim of production deployment. The live-camera and full-model paths are supported through clear interfaces, while the default replay mode keeps the repository dependable for review, CI, and demos.
+ The live-camera and full-model paths are supported through clear interfaces, while the default replay mode keeps the repository dependable for review, CI, and demos.
 
 ## Problem statement
 
@@ -543,7 +543,6 @@ mkdir -p runtime-data/edge runtime-data/backend
 
 ## Engineering tradeoffs
 
-- **Replay-first demo:** deterministic replay makes the project reliable in interviews, CI, and code review while preserving the edge pipeline boundaries.
 - **SQLite at the edge:** SQLite is a good fit for single-device local durability and makes queue recovery inspectable with normal tooling.
 - **Suppression as data:** suppressed events are retained because they are useful for threshold tuning and alert-quality review.
 - **Plain HTTP client in C++:** the edge runtime avoids a heavy dependency for local demos; the production boundary calls for TLS and a hardened client library.
