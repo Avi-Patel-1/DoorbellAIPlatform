@@ -42,7 +42,7 @@ assets:
 	python scripts/export_docs_assets.py --benchmark benchmarks/outputs/latest.json
 
 docs-build:
-	cd docs-site && npm install && npm run build
+	cd docs-site && npm ci && npm run build
 
 docs: docs-build
 

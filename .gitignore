@@ -31,10 +31,15 @@ runtime-data/
 *.log
 .env
 
-# Benchmarks/reports generated locally
-benchmarks/outputs/*.json
-benchmarks/outputs/*.md
-benchmarks/outputs/*.svg
+# Benchmarks/reports generated locally.
+# Keep the latest demo report checked in so the README and docs render with real artifacts.
+benchmarks/outputs/*
+!benchmarks/outputs/.gitkeep
+!benchmarks/outputs/latest.json
+!benchmarks/outputs/summary.md
+!benchmarks/outputs/latest_events.jsonl
+!benchmarks/outputs/latency_chart.svg
+!benchmarks/outputs/alert_mix.svg
 reports/generated/
 
 # OS/editor

@@ -1,4 +1,5 @@
-import { NavLink, Route, Routes } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { NavLink, RouterContext } from './router'
 import OverviewPage from './pages/OverviewPage'
 import EventsPage from './pages/EventsPage'
 import EventDetailPage from './pages/EventDetailPage'
@@ -17,8 +18,33 @@ const nav = [
 ]
 
 export default function App() {
+  const [path, setPath] = useState(window.location.pathname)
+  useEffect(() => {
+    const onPop = () => setPath(window.location.pathname)
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [])
+  const navigate = (to: string) => {
+    window.history.pushState(null, '', to)
+    setPath(window.location.pathname)
+  }
+  const page = path.startsWith('/events/')
+    ? <EventDetailPage />
+    : path.startsWith('/events')
+      ? <EventsPage />
+      : path.startsWith('/devices')
+        ? <DevicesPage />
+        : path.startsWith('/settings')
+          ? <SettingsPage />
+          : path.startsWith('/benchmarks')
+            ? <BenchmarksPage />
+            : path.startsWith('/demo')
+              ? <DemoReplayPage />
+              : <OverviewPage />
+
   return (
-    <div className="min-h-screen bg-slate-50">
+    <RouterContext.Provider value={{ path, navigate }}>
+      <div className="min-h-screen bg-slate-50">
       <aside className="fixed inset-y-0 left-0 hidden w-64 border-r border-line bg-white px-5 py-6 lg:block">
         <div className="mb-9">
           <div className="text-xl font-bold tracking-tight text-ink">Porchlight</div>
@@ -46,17 +72,10 @@ export default function App() {
           </div>
         </header>
         <div className="px-5 py-6 lg:px-8">
-          <Routes>
-            <Route path="/" element={<OverviewPage />} />
-            <Route path="/events" element={<EventsPage />} />
-            <Route path="/events/:id" element={<EventDetailPage />} />
-            <Route path="/devices" element={<DevicesPage />} />
-            <Route path="/settings" element={<SettingsPage />} />
-            <Route path="/benchmarks" element={<BenchmarksPage />} />
-            <Route path="/demo" element={<DemoReplayPage />} />
-          </Routes>
+          {page}
         </div>
       </main>
-    </div>
+      </div>
+    </RouterContext.Provider>
   )
 }

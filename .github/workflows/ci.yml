@@ -34,5 +34,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: cd dashboard && npm install && npm run build
-      - run: cd docs-site && npm install && npm run build
+      - run: cd dashboard && npm ci && npm run build
+      - run: cd docs-site && npm ci && npm run build
