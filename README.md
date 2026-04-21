@@ -1,7 +1,7 @@
 # Porchlight
 
 **Edge AI Smart Doorbell and Intelligent Event Detection Platform**
-
+https://avi-patel-1.github.io/DoorbellAIPlatform/
 Porchlight is a software-first connected-device project for a Linux smart doorbell or entry-monitoring device. The edge runtime decides which porch activity matters before anything is sent upstream: it filters low-confidence motion, suppresses duplicate alerts, keeps operating during network outages, and sends explainable events plus device health telemetry to a backend and dashboard.
 
 The project is designed to be easy to review on a laptop and still map cleanly to a Raspberry Pi or other Linux edge device. The default demo does not require a camera, GPU, model download, cloud account, or special hardware.
