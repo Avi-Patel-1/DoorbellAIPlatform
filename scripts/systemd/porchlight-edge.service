@@ -1,0 +1,19 @@
+[Unit]
+Description=Porchlight edge runtime
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=porchlight
+Group=porchlight
+WorkingDirectory=/opt/porchlight
+EnvironmentFile=/etc/porchlight/edge.env
+ExecStart=/opt/porchlight/bin/porchlight_edge --config /etc/porchlight/edge.yaml
+Restart=on-failure
+RestartSec=5
+RuntimeDirectory=porchlight
+StateDirectory=porchlight
+
+[Install]
+WantedBy=multi-user.target

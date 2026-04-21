@@ -1,0 +1,43 @@
+# build outputs
+build/
+cmake-build-*/
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Runtime data
+runtime-data/
+*.db
+*.sqlite
+*.sqlite3
+*.log
+.env
+
+# Benchmarks/reports generated locally
+benchmarks/outputs/*.json
+benchmarks/outputs/*.md
+benchmarks/outputs/*.svg
+reports/generated/
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,60 @@
+{
+  "generated_at_unix_ms": 1776791383936,
+  "scenario": "demo-assets/scenarios/entry_sequence.frames.csv",
+  "edge_replay": {
+    "device_id": "porch-pi-001",
+    "frames": 180,
+    "processed_frames": 180,
+    "dropped_frames": 0,
+    "fps": 17629.16,
+    "avg_processing_latency_ms": 0.00065,
+    "p95_processing_latency_ms": 0.00015,
+    "meaningful_alerts": 5,
+    "suppressed_alerts": 10,
+    "queue_depth_final": 0,
+    "queue_depth_peak": 0,
+    "wall_time_seconds": 0.024936,
+    "events_jsonl": "benchmarks/outputs/latest_events.jsonl"
+  },
+  "threshold_sweeps": [
+    {
+      "profile": "sensitive",
+      "frames": 196,
+      "meaningful_alerts": 4,
+      "suppressed_alerts": 12,
+      "avg_processing_latency_ms": 0.00131,
+      "p95_processing_latency_ms": 0.00211,
+      "fps": 46444.57314
+    },
+    {
+      "profile": "balanced",
+      "frames": 196,
+      "meaningful_alerts": 4,
+      "suppressed_alerts": 23,
+      "avg_processing_latency_ms": 0.00119,
+      "p95_processing_latency_ms": 0.00184,
+      "fps": 346371.14369
+    },
+    {
+      "profile": "low_noise",
+      "frames": 196,
+      "meaningful_alerts": 4,
+      "suppressed_alerts": 38,
+      "avg_processing_latency_ms": 0.00115,
+      "p95_processing_latency_ms": 0.00177,
+      "fps": 350367.26003
+    }
+  ],
+  "queue_reconnect": {
+    "peak_queue_depth": 6,
+    "final_queue_depth": 0,
+    "recovery_loop_seconds": 1.6e-05,
+    "flush_success": true
+  },
+  "api_timings": {
+    "available": false
+  },
+  "process_resource_usage": {
+    "max_rss_kb": 282104
+  }
+}

@@ -1,0 +1,38 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  edge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y cmake g++ libsqlite3-dev
+      - run: cmake -S edge-runtime -B edge-runtime/build -DCMAKE_BUILD_TYPE=Release
+      - run: cmake --build edge-runtime/build --parallel
+      - run: ctest --test-dir edge-runtime/build --output-on-failure
+      - run: python benchmarks/scripts/run_benchmarks.py --edge-binary edge-runtime/build/porchlight_edge --scenario demo-assets/scenarios/entry_sequence.frames.csv --output-dir benchmarks/outputs
+
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -r backend/requirements.txt pytest httpx
+      - run: cd backend && python -m pytest -q
+
+  frontend-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: cd dashboard && npm install && npm run build
+      - run: cd docs-site && npm install && npm run build

@@ -1,0 +1,16 @@
+profiles:
+  balanced:
+    motion_threshold: 0.18
+    person_threshold: 0.72
+    package_threshold: 0.68
+    cooldown_seconds: 8
+  low_noise:
+    motion_threshold: 0.26
+    person_threshold: 0.80
+    package_threshold: 0.76
+    cooldown_seconds: 16
+  sensitive:
+    motion_threshold: 0.12
+    person_threshold: 0.62
+    package_threshold: 0.60
+    cooldown_seconds: 4
